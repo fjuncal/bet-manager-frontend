@@ -1,23 +1,26 @@
 "use client";
 import styled from "@emotion/styled";
 
-const Button = styled.button`
+const StyledButton = styled.button`
+  padding: ${({ theme }) => theme.spacing(2)};
   background-color: ${({ theme }) => theme.colors.primary};
   color: #fff;
-  padding: ${({ theme }) => theme.spacing(2)} ${({ theme }) => theme.spacing(4)};
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.secondary};
-  }
+  font-weight: bold;
+  transition: background-color 0.3s;
 
-  /* Responsividade */
-  @media (max-width: 768px) {
-    font-size: 14px;
-    padding: ${({ theme }) => `${theme.spacing(1)} ${theme.spacing(2)}`};
+  &:hover {
+    background-color: #1481c3;
   }
 `;
 
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children: React.ReactNode;
+}
+const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
+  return <StyledButton {...props}>{children}</StyledButton>;
+};
 export default Button;

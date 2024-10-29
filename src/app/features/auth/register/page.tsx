@@ -1,4 +1,6 @@
 "use client";
+import Button from "@/src/app/components/Button";
+import Input from "@/src/app/components/Input";
 import styled from "@emotion/styled";
 import { useState } from "react";
 
@@ -19,36 +21,6 @@ const Form = styled.form`
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra suave */
   max-width: 400px;
   width: 100%;
-`;
-
-const Input = styled.input`
-  margin-bottom: ${({ theme }) => theme.spacing(2)};
-  padding: ${({ theme }) => theme.spacing(2)};
-  font-size: 16px;
-  background-color: #1c3a57;
-  color: #fff;
-  border: 1px solid #334e68;
-  border-radius: 8px;
-  &:focus {
-    outline: none;
-    border-color: ${({ theme }) => theme.colors.primary};
-    box-shadow: 0 0 0 2px rgba(29, 161, 242, 0.3);
-  }
-`;
-
-const Button = styled.button`
-  padding: ${({ theme }) => theme.spacing(2)};
-  background-color: #1da1f2;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s;
-  &:hover {
-    background-color: #1481c3;
-  }
 `;
 
 const FooterText = styled.p`
