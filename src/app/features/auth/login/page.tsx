@@ -37,9 +37,17 @@ const FooterText = styled.p`
   }
 `;
 
+const ErrorMessage = styled.p`
+  color: red;
+  text-align: center;
+  margin-top: 1rem;
+`;
+
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+
   const { login } = useAuth();
 
   const handleLogin = async (e: any) => {
@@ -47,7 +55,10 @@ export default function LoginPage() {
     try {
       await login(email, password);
     } catch (error: any) {
-      alert(error.message);
+      setError(
+        error.message ||
+          "Houve um problema com o sistema. Tente novamente mais tarde."
+      );
     }
     console.log({ email, password });
   };
@@ -73,6 +84,8 @@ export default function LoginPage() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <Button type="submit">Entrar</Button>
+        {error && <ErrorMessage>{error}</ErrorMessage>}
+
         <FooterText>
           Não tem conta? <a href="/features/auth/register">Cadastre-se</a>
         </FooterText>

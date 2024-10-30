@@ -5,11 +5,11 @@ export async function login(email: string, password: string) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
   });
-  const data = await response.json();
   if (!response.ok) {
-    throw new Error(data.message || "Erro no login");
+    const errorData = await response.json();
+    throw new Error(errorData.message || "Erro no login");
   }
-  return data;
+  return await response.json();
 }
 
 export async function register(name: string, email: string, password: string) {
@@ -18,9 +18,9 @@ export async function register(name: string, email: string, password: string) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name, email, password }),
   });
-  const data = await response.json();
   if (!response.ok) {
-    throw new Error(data.message || "Erro no cadastro");
+    const errorData = await response.json();
+    throw new Error(errorData.message || "Erro no cadastro");
   }
-  return data;
+  return await response.json();
 }
