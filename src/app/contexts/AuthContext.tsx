@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/router";
 import {
   createContext,
   ReactNode,
@@ -12,6 +11,7 @@ import {
   login as loginService,
   register as registerService,
 } from "../services/AuthService";
+import { useRouter } from "next/navigation";
 
 interface AuthContextProps {
   user: any;

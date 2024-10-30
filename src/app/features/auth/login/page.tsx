@@ -2,6 +2,7 @@
 
 import Button from "@/src/app/components/Button";
 import Input from "@/src/app/components/Input";
+import { useAuth } from "@/src/app/contexts/AuthContext";
 import styled from "@emotion/styled";
 import { useState } from "react";
 
@@ -39,9 +40,15 @@ const FooterText = styled.p`
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login } = useAuth();
 
-  const handleLogin = (e: any) => {
+  const handleLogin = async (e: any) => {
     e.preventDefault();
+    try {
+      await login(email, password);
+    } catch (error: any) {
+      alert(error.message);
+    }
     console.log({ email, password });
   };
 
